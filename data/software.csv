@@ -1,0 +1,19 @@
+package,what,when,with,why,where, release
+ClusterR,"Gaussian Mixture Models, K-Means, Mini-Batch-Kmeans, K-Medoids and Affinity Propagation Clustering",2016-09-06,L Mouselimis,http://mlampros.github.io/2016/09/12/clusterR_package/, Author and maintainer, CRAN
+CopernicusDEM,Copernicus Digital Elevation Models,2021-05-15,L Mouselimis,http://mlampros.github.io/2021/05/21/copernicusDEM_package/, Author and maintainer, CRAN
+elmNNRcpp,The Extreme Learning Machine Algorithm,2018-07-05,L Mouselimis,http://mlampros.github.io/2018/07/05/the_extreme_learning_machine_package/, Author and maintainer, CRAN
+fastText,Efficient Learning of Word Representations and Sentence Classification,2021-05-14,L Mouselimis,http://mlampros.github.io/2021/05/14/fasttext_language_identification/, Author and maintainer, CRAN
+FeatureSelection,"Feature extraction and selection based on 'glmnet', 'xgboost' and 'ranger'",2016-05-18,L Mouselimis,http://mlampros.github.io/2016/02/14/feature-selection/, Author and maintainer,Github
+fitbitViz,'Fitbit' Visualizations,2021-05-18,L Mouselimis,http://mlampros.github.io/2021/05/20/fitbitViz_package/, Author and maintainer, CRAN
+fuzzywuzzyR,Fuzzy String Matching,2017-04-11,L Mouselimis,http://mlampros.github.io/2017/04/13/fuzzywuzzyR_package/, Author and maintainer, CRAN
+geojsonR,A GeoJson Processing Toolkit,2017-03-28,L Mouselimis,http://mlampros.github.io/2017/03/29/geojsonR_package/, Author and maintainer, CRAN
+GeoMongo,Geospatial Queries Using 'PyMongo',2017-08-07,L Mouselimis,http://mlampros.github.io/2017/08/07/the_GeoMongo_package/, Author and maintainer, CRAN
+GloveR,Global Vectors for Word Representation (Glove),2017-01-04,L Mouselimis,https://mlampros.github.io/GloveR/, Author and maintainer,Github
+KernelKnn,Kernel k Nearest Neighbors,2016-07-11,L Mouselimis,http://mlampros.github.io/2016/07/10/KernelKnn/, Author and maintainer, CRAN
+nmslibR,Non Metric Space (Approximate) Library,2018-02-27,L Mouselimis,http://mlampros.github.io/2018/02/27/the_nmslibR_package/, Author and maintainer, CRAN
+OpenImageR,An Image Processing Toolkit,2016-07-09,L Mouselimis,http://mlampros.github.io/2016/07/08/OpenImageR/, Author and maintainer, CRAN
+RandomSearchR,Random Search in R,2016-09-19,L Mouselimis,http://mlampros.github.io/2016/03/14/random_search_R/, Author and maintainer,Github
+RGF,Regularized Greedy Forest,2018-02-13,L Mouselimis,http://mlampros.github.io/2018/02/14/the_RGF_package/, Author and maintainer, CRAN
+SuperpixelImageSegmentation,Superpixel Image Segmentation,2018-12-30,L Mouselimis,http://mlampros.github.io/2018/11/09/Image_Segmentation_Superpixels_Clustering/, Author and maintainer, CRAN
+textTinyR,Text Processing for Small or Big Data Files,2017-01-07,L Mouselimis,http://mlampros.github.io/2017/01/05/textTinyR_package/, Author and maintainer, CRAN
+PlanetNICFI,Processing of the 'Planet NICFI' Satellite Imagery,2021-06-10,L Mouselimis,http://mlampros.github.io/2021/06/12/Planet_NICFI_Satellite_Imagery/, Author and maintainer, CRAN

@@ -1,0 +1,7 @@
+type,Reading,Writing ,Listening ,Speaking,Certificate,Institution,Year
+Greek,native,native,native,native,'’,'’,'’
+English,22,28,18,23,TOEFL Ibt,ETS,2018
+English,24,27,20,20,TOEFL Ibt,ETS,2011
+English,C1,C1,C1,C1,State Certificate,European Framework,2010
+English,B2,B2,B2,B2,ECCE,University of Michigan,2008
+German,C2,C2,C2,C2,State Certificate,European Framework,2003

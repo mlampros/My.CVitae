@@ -1,0 +1,28 @@
+skill,level,type
+R,Proficient,programming
+Python,Advanced,programming
+C++,Intermediate,programming
+Matlab,Familiar,programming
+SQL,Familiar,programming
+Bigquery,Familiar,programming
+MongoDB,Familiar,programming
+Octave,Familiar,programming
+CUDA,Familiar,programming
+Rstudio,Proficient,technical skill
+Spyder,Advanced,technical skill
+Git,Advanced,technical skill
+Docker,Advanced,technical skill
+Keras,Advanced,technical skill
+Pytorch,Advanced,technical skill
+Remote Sensing,Advanced,technical skill
+Rcpp,Advanced,technical skill
+RcppArmadillo,Advanced,technical skill
+Leaflet,Advanced,technical skill
+ggplot2,Advanced,technical skill
+R shiny,Advanced,technical skill
+Linux ,Intermediate,technical skill
+Macintosh,Intermediate,technical skill
+Windows,Intermediate,technical skill
+Jenkins CI,Intermediate,technical skill
+Amazon Web Services,Intermediate,technical skill
+Google Cloud Engine,Advanced,technical skill

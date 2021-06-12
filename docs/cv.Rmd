@@ -1,0 +1,330 @@
+---
+name: Lampros Sp. Mouselimis
+position: ""
+address: ""
+profilepic: photo.jpg
+phone: ""
+www: mlampros.github.io/
+email: "mouselimislampros@gmail.com"
+twitter: lampros_twit
+github: mlampros
+linkedin: mlampros
+googlescholar: JXg3b58AAAAJ
+orcid: "0000-0002-8024-1546"
+aboutme: "I'm a data & remote sensing analyst and open source author / maintainer of numerous R language packages (CRAN, Github), competent in two programming languages (R, Python) who takes advantage of C++ (in R through the Rcpp and RcppArmadillo packages and in python through Cython) to improve the efficiency of internal functions"
+headcolor: 009ACD
+date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::awesomecv:
+    keep_tex: true
+    fig_crop: no
+always_allow_html: yes
+header-includes:
+  - \usepackage{float}
+  - \floatplacement{figure}{H}              # make every figure with caption = h
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+require(magrittr)
+
+repo_dir = "/__w/My.CVitae/My.CVitae"
+# repo_dir = getwd()
+
+software_path = file.path(repo_dir, "data", "software.csv")
+education_path = file.path(repo_dir, "data", "education.csv")
+jobs_path = file.path(repo_dir, "data", "jobs.csv")
+training_path = file.path(repo_dir, "data", "training.csv")
+spoken_languages = file.path(repo_dir, "data", "languages.csv")
+technical_sk_path = file.path(repo_dir, "data", "technical_skills.csv")
+geospatial_anal_path = file.path(repo_dir, "data", "geospatial_analysis.csv")
+personal_data_path = file.path(repo_dir, "data", "personal_data.csv")
+
+```
+
+<br>
+
+![](human_evolution.jpg)
+
+<br>
+
+R-Programming Packages
+======================
+
+
+```{r programming, include=FALSE}
+
+software = readr::read_csv(software_path) %>%
+  dplyr::arrange(dplyr::desc(when))
+
+```
+
+
+```{r}
+
+software %>% 
+  vitae::detailed_entries(what = what, 
+                          with = package, 
+                          when = when, 
+                          why = why, 
+                          where = glue::glue("{where} ({release})"))
+```
+
+\bigskip
+\bigskip
+
+
+Publications
+============
+
+```{r google scholar, include=FALSE}
+
+pubs <- scholar::get_publications("JXg3b58AAAAJ") %>% 
+  dplyr::mutate(author = author %>% 
+                  as.character %>% 
+                  stringr::str_trim(),
+                journal = journal %>% 
+                  replace(journal %in% "bioRxiv", "BioRxiv"), 
+                first_author = dplyr::case_when(stringr::str_starts(author, "L Mouselimis") ~ TRUE,
+                                         TRUE ~ FALSE),
+                preprint = dplyr::case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
+                                     TRUE ~ FALSE)) %>% 
+  dplyr::arrange(desc(year))
+
+```
+
+
+```{r}
+
+pubs %>% 
+  dplyr::filter(first_author, !preprint) %>% 
+  vitae::detailed_entries(
+    what = title,
+    when = as.character(year),
+    with = author,
+    where = journal, 
+    .protect = TRUE
+  )
+
+```
+
+
+\bigskip
+\bigskip
+
+
+Education
+=========
+
+```{r education, include=FALSE}
+
+edu = readr::read_csv(education_path)
+
+```
+
+
+```{r}
+
+vitae::detailed_entries(edu, 
+                        when = glue::glue("{start_date}--{end_date}"),
+                        what = degree,
+                        where = loc,
+                        with = uni,
+                        why = details)
+
+```
+
+
+\bigskip
+\bigskip
+
+
+Experience
+==========
+
+```{r work experience, include=FALSE}
+
+jobs = readr::read_csv(jobs_path)
+
+```
+
+
+```{r}
+
+jobs %>% 
+  vitae::detailed_entries(what = role,
+                          when = glue::glue("{start_date}--{end_date}"),
+                          with = company,
+                          where = where,
+                          why = details)
+```
+\pagebreak
+
+
+\bigskip
+\bigskip
+
+
+Post Graduate Training
+======================
+
+```{r training, include=FALSE}
+
+training = readr::read_csv(training_path)
+
+```
+
+
+```{r}
+
+training %>% 
+  vitae::detailed_entries(what = institution, 
+                          with = glue::glue("{what}  [ {with} ]"), 
+                          when = certificate, 
+                          where = programming,
+                          why = type_education)
+```
+
+
+\bigskip
+\bigskip
+
+
+Spoken Languages
+================
+
+\bigskip
+
+
+```{r spoken languages, include=FALSE}
+
+languages = readr::read_csv(spoken_languages)
+
+```
+
+```{r}
+
+languages %>% 
+  kableExtra::kable(booktabs = T, align = 'c', escape = F, format = "latex") %>%
+  kableExtra::kable_styling(full_width = F, font_size = 9, latex_options = "HOLD_position", fixed_thead = T) %>% 
+  kableExtra::footnote(
+    footnote_as_chunk = T,
+    general_title = " ",
+    general = "\\\\tiny Common European Framework of Reference for Languages: A1/A2: Basic User. B1/B2: Independent User. C1/C2: Proficient User",
+    escape = F
+  ) %>%
+  kableExtra::column_spec(column = 1:6, width = '1.9cm') %>%
+  kableExtra::column_spec(1, bold = TRUE, color = 'blue') %>%
+  kableExtra::column_spec(6, bold = TRUE, color = 'green') %>%
+  kableExtra::column_spec(8, bold = TRUE, color = 'orange') %>%
+  kableExtra::row_spec(0, color = 'blue')
+
+```
+
+\pagebreak
+
+
+\bigskip
+\bigskip
+
+
+Technical Skills
+================
+
+\bigskip
+
+
+```{r technical skills, include=FALSE}
+
+technical_skills = readr::read_csv(technical_sk_path)
+
+```
+
+```{r, fig.width = 8, fig.height = 5, fig.align = "left", out.width = "7.6in", out.height = "4.5in"}
+
+technical_skills$level = factor(technical_skills$level, levels = c("Familiar", "Intermediate", "Advanced", "Proficient"))
+
+plt_lev = ggplot2::ggplot(data = technical_skills, ggplot2::aes(x = skill, y = level)) + 
+  ggplot2::geom_tile(mapping = ggplot2::aes(fill = level)) + 
+  ggplot2::facet_wrap(facets = ~type, scales = 'free') +
+  ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
+  ggplot2::theme(plot.title = ggplot2::element_text(size = "8", hjust = 0.5, face = "bold", colour = "blue"),
+                 axis.title.x = ggplot2::element_text(size = 8, face = "bold", colour = "blue"),
+                 axis.title.y = ggplot2::element_text(size = 8, face = "bold", colour = "blue"),
+                 axis.text.x = ggplot2::element_text(size = 8, face = "bold", colour = "black", angle = 35, vjust = 1.0, hjust = 1.0),
+                 axis.text.y = ggplot2::element_text(size = 8, face = "bold", colour = "black"),
+                 strip.text.x = ggplot2::element_text(size = 8, face = "bold", colour = "black"),
+                 legend.text = ggplot2::element_text(size = 8, face = "bold", colour = "black"),
+                 legend.position = "top")
+
+plt_lev
+
+```
+
+
+Geospatial Analysis (Timeline)
+==============================
+
+
+```{r geospatial analysis, include=FALSE}
+
+geospatial_analysis = readr::read_csv(geospatial_anal_path)
+
+```
+
+```{r, fig.width = 8, fig.height = 4, fig.align = "left", out.width = "7.6in", out.height = "4.5in"}
+
+par(oma = c(0,0,0,0))      # set all plot margins to 0 so that the 'geospatial data' can fit in the same page
+par(mar = c(0,0,0,0))
+
+geospatial_analysis = geospatial_analysis[, 1:2]
+
+length_downup = seq(from = 0.4, to = 0.9, length = nrow(geospatial_analysis))
+
+timelineS::timelineS(geospatial_analysis, 
+                      main = NA, 
+                      label.direction = 'downup', 
+                      label.length = length_downup,           # customize the height of the lines
+                      scale = 'quarter',
+                      scale.font = 1.5,
+                      line.color = "blue", 
+                      label.color = "orange", 
+                      point.color = "green",
+                      pch = "*",
+                      buffer.days = 720,                      # this parameter extends the range of the years (bothsides)
+                      labels = geospatial_analysis[[1]],      # keep only text and omit the dates
+                      label.cex = 0.6,
+                      label.font = 1)
+
+```
+
+\pagebreak
+
+
+\bigskip
+\bigskip
+
+
+Personal Data
+=============
+
+\bigskip
+
+
+```{r personal data, include=FALSE}
+
+personal_data = readr::read_csv(personal_data_path)
+
+```
+
+```{r}
+
+personal_data %>%
+  kableExtra::kable(booktabs = T, align = 'l', escape = F, format = "latex", col.names = NULL) %>%
+  kableExtra::kable_styling(full_width = F, font_size = 9, latex_options = "HOLD_position", fixed_thead = T) %>% 
+  kableExtra::column_spec(1, bold = TRUE, color = 'blue') %>%
+  kableExtra::column_spec(2, width = "30em")
+
+```
+
