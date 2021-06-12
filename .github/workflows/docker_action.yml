@@ -19,7 +19,7 @@ jobs:
     name: create the curriculum vitae pdf file
     runs-on: ubuntu-latest
     container:
-      image: mlampros/mycvitae::rstudiodev
+      image: mlampros/mycvitae:rstudiodev
     steps:
      - uses: actions/checkout@v2
      - name: render the curriculum vitae
