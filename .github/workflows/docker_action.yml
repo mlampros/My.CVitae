@@ -1,0 +1,60 @@
+
+#................................................................................
+# "/__w/My.CVitae/My.CVitae" is the working directory when using the docker image
+# use    Rscript -e "print(getwd())"   in the 'render the curriculum vitae' step
+# I have to add this manually in the 'cv.Rmd' file of the 'docs' directory
+#
+# For the docker credentials see: https://stackoverflow.com/a/64051330/8302386
+#................................................................................
+
+on:
+  push:
+    branches: master
+
+name: docker_cv
+
+
+jobs:
+  build:
+    name: create the curriculum vitae pdf file
+    runs-on: ubuntu-latest
+    container:
+      image: mlampros/mycvitae::rstudiodev
+    steps:
+     - uses: actions/checkout@v2
+     - name: render the curriculum vitae
+       run: |
+          Rscript -e "print(getwd())"
+          Rscript -e "rmarkdown::render(input = file.path(getwd(), 'docs', 'cv.Rmd'))"
+     - name: Commit files
+       run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add --all
+          git commit -am "add the cv.pdf file to the 'docs' directory of the repository"
+          git push
+     - name: Upload pdf file
+       uses: actions/upload-artifact@v1
+       with:
+         name: docs
+         path: docs/
+
+  deploy:
+    name: upload the pdf file to the github pages
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+       - name: Download artifact
+         uses: actions/download-artifact@v1.0.0
+         with:
+           name: docs                                   # Artifact name (optional)
+           path: docs                                   # Destination path (optional)
+       - name: Deploy to GitHub Pages
+         uses: Cecilapp/GitHub-Pages-deploy@v3
+         env:
+            GITHUB_TOKEN: ${{ secrets.GH_PAT }}         # https://github.com/settings/tokens
+         with:
+            email: ${{ secrets.EMAIL }}
+            build_dir: docs/
