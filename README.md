@@ -15,8 +15,8 @@ The [(gh) .yml file](https://github.com/mlampros/My.CVitae/blob/master/.github/w
 
 In a final step - if an R user intends to replicate the whole process - the 
 
-* [Github Url](https://raw.githubusercontent.com/mlampros/My.CVitae/master/docs/cv.pdf) has to be modified in the following way **https://raw.githubusercontent.com/{PATH TO THE CV.pdf FILE}** and 
-* [Google Docs Url](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/mlampros/My.CVitae/master/docs/cv.pdf) has to be modified in the following way **https://docs.google.com/viewer?url={PATH TO THE CV.pdf FILE}**
+* [Github Url](https://raw.githubusercontent.com/mlampros/My.CVitae/master/docs/cv.pdf) has to be modified in the following way `https://raw.githubusercontent.com/{PATH TO THE CV.pdf FILE}` and 
+* [Google Docs Url](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/mlampros/My.CVitae/master/docs/cv.pdf) has to be modified in the following way `https://docs.google.com/viewer?url={PATH TO THE CV.pdf FILE}`
 
 to display the **cv.pdf** output file.
 

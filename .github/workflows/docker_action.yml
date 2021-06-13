@@ -26,10 +26,10 @@ jobs:
       image: mlampros/mycvitae:rstudiodev
     steps:
      - uses: actions/checkout@v2
-     - name: pass the working directory as parameter to the rmarkdown::render() function
-       run: echo "WORKING_DIR=${{ github.workspace }}" >> $GITHUB_ENV
      - name: render the curriculum vitae
-       run: Rscript -e "rmarkdown::render(input = file.path(getwd(), 'docs', 'cv.Rmd'), params = list(work_dir = '${{ env.WORKING_DIR }}'))"
+       run: |
+         Rscript -e "print(getwd())"
+         Rscript -e "rmarkdown::render(input = file.path(getwd(), 'docs', 'cv.Rmd'), params = list(work_dir = getwd()))"
      - name: Commit files
        run: |
           git config --local user.email "actions@github.com"
