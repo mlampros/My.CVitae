@@ -4,10 +4,14 @@
 # use    Rscript -e "print(getwd())"   in the 'render the curriculum vitae' step
 # I have to add this manually in the 'cv.Rmd' file of the 'docs' directory
 #
-# For the docker credentials see: https://stackoverflow.com/a/64051330/8302386
+# For the case that I have to use docker credentials see:
+#    https://stackoverflow.com/a/64051330/8302386
 #................................................................................
 
+
 on:
+  schedule:
+    - cron: "0 23 * * SUN"
   push:
     branches: master
 
@@ -22,10 +26,10 @@ jobs:
       image: mlampros/mycvitae:rstudiodev
     steps:
      - uses: actions/checkout@v2
+     - name: pass the working directory as parameter to the rmarkdown::render() function
+       run: echo "WORKING_DIR=${{ github.workspace }}" >> $GITHUB_ENV
      - name: render the curriculum vitae
-       run: |
-          Rscript -e "print(getwd())"
-          Rscript -e "rmarkdown::render(input = file.path(getwd(), 'docs', 'cv.Rmd'))"
+       run: Rscript -e "rmarkdown::render(input = file.path(getwd(), 'docs', 'cv.Rmd'), params = list(work_dir = '${{ env.WORKING_DIR }}'))"
      - name: Commit files
        run: |
           git config --local user.email "actions@github.com"
@@ -39,22 +43,3 @@ jobs:
          name: docs
          path: docs/
 
-  deploy:
-    name: upload the pdf file to the github pages
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-       - name: Checkout
-         uses: actions/checkout@master
-       - name: Download artifact
-         uses: actions/download-artifact@v1.0.0
-         with:
-           name: docs                                   # Artifact name (optional)
-           path: docs                                   # Destination path (optional)
-       - name: Deploy to GitHub Pages
-         uses: Cecilapp/GitHub-Pages-deploy@v3
-         env:
-            GITHUB_TOKEN: ${{ secrets.GH_PAT }}         # https://github.com/settings/tokens
-         with:
-            email: ${{ secrets.EMAIL }}
-            build_dir: docs/
