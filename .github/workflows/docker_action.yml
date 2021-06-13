@@ -1,12 +1,8 @@
 
-#................................................................................
-# "/__w/My.CVitae/My.CVitae" is the working directory when using the docker image
-# use    Rscript -e "print(getwd())"   in the 'render the curriculum vitae' step
-# I have to add this manually in the 'cv.Rmd' file of the 'docs' directory
-#
-# For the case that I have to use docker credentials see:
+#................................................
+# In case I have to use docker credentials see:
 #    https://stackoverflow.com/a/64051330/8302386
-#................................................................................
+#................................................
 
 
 on:

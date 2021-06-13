@@ -32,9 +32,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 require(magrittr)
 
-repo_dir = params$work_dir
-# repo_dir = "/__w/My.CVitae/My.CVitae"
-# repo_dir = getwd()
+repo_dir = dirname(params$work_dir)            # use 'dirname()' because the '.Rmd' file is executed from inside the 'docs' directory, therefore 'docs' is considered as working directory and I have to move one directory upwards
 
 software_path = file.path(repo_dir, "data", "software.csv")
 education_path = file.path(repo_dir, "data", "education.csv")
@@ -46,13 +44,6 @@ geospatial_anal_path = file.path(repo_dir, "data", "geospatial_analysis.csv")
 personal_data_path = file.path(repo_dir, "data", "personal_data.csv")
 
 ```
-
-```{r}
-
-print(repo_dir)
-
-```
-
 
 <br>
 
