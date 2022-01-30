@@ -83,13 +83,15 @@
 \RequirePackage[skins]{tcolorbox}
 % Needed to deal a paragraphs
 \RequirePackage{parskip}
-% Needed to deal hyperlink
-\RequirePackage[hidelinks,unicode]{hyperref}
+% Needed to deal hyperlink  [ see: https://github.com/mlampros/My.CVitae/issues/1#issuecomment-1024437679 for the 'darklink' and 'lightlink' ]
+\RequirePackage[unicode]{hyperref}
 \hypersetup{%
   pdftitle={},
   pdfauthor={},
   pdfsubject={},
   pdfkeywords={}
+  colorlinks=true,
+  pdfborder=0
 }
 
 
@@ -122,6 +124,11 @@
 %-------------------------------------------------------------------------------
 %                Configuration for colors
 %-------------------------------------------------------------------------------
+
+% Hyperlink colors  [ see: https://github.com/mlampros/My.CVitae/issues/1#issuecomment-1024437679 for the 'darklink' and 'lightlink' ]
+\definecolor{darklink}{HTML}{005F9A}
+\definecolor{lightlink}{HTML}{009ACD}
+
 % Gray-scale colors
 \definecolor{white}{HTML}{FFFFFF}
 \definecolor{black}{HTML}{000000}
@@ -189,6 +196,12 @@
 %-------------------------------------------------------------------------------
 %                Configuration for styles
 %-------------------------------------------------------------------------------
+
+% [ see: https://github.com/mlampros/My.CVitae/issues/1#issuecomment-1024437679 for the 'darklink' and 'lightlink' ]
+\newcommand{\darkhref}[2]{\href{#1}{\textcolor{darklink}{#2}}}
+\newcommand{\lighthref}[2]{\href{#1}{\textcolor{lightlink}{#2}}}
+
+
 % Configure styles for each CV elements
 % For fundamental structures
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
@@ -471,61 +484,61 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+          \lighthref{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
         }%
       \ifthenelse{\isundefined{\@orcid}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://orcid.org/\@orcid}{\aiOrcidSquare\acvHeaderIconSep\@orcid}%
+          \lighthref{https://orcid.org/\@orcid}{\aiOrcidSquare\acvHeaderIconSep\@orcid}%
         }%
       \ifthenelse{\isundefined{\@publons}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://publons.com/researcher/\@publons}{\aiPublonsSquare\acvHeaderIconSep\@publons}%
+          \lighthref{https://publons.com/researcher/\@publons}{\aiPublonsSquare\acvHeaderIconSep\@publons}%
         }%
       \ifthenelse{\isundefined{\@googlescholar}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://scholar.google.com/citations?user=\@googlescholar}{\aiGoogleScholarSquare\acvHeaderIconSep\@googlescholar}%
+          \lighthref{https://scholar.google.com/citations?user=\@googlescholar}{\aiGoogleScholarSquare\acvHeaderIconSep\@googlescholar}%
         }%
       \ifthenelse{\isundefined{\@researchgate}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.researchgate.net/profile/\@researchgate}{\aiResearchGateSquare\acvHeaderIconSep\@researchgate}%
+          \lighthref{https://www.researchgate.net/profile/\@researchgate}{\aiResearchGateSquare\acvHeaderIconSep\@researchgate}%
         }%
       \ifthenelse{\isundefined{\@github}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
+          \lighthref{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep\@github}%
         }%
       \ifthenelse{\isundefined{\@gitlab}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}%
+          \lighthref{https://gitlab.com/\@gitlab}{\faGitlab\acvHeaderIconSep\@gitlab}%
         }%
       \ifthenelse{\isundefined{\@stackoverflowid}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
+          \lighthref{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
         }%
       \ifthenelse{\isundefined{\@linkedin}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
+          \lighthref{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
         }%
       \ifthenelse{\isundefined{\@twitter}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}%
+          \lighthref{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}%
         }%
       \ifthenelse{\isundefined{\@skype}}%
         {}%
@@ -537,13 +550,13 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.reddit.com/user/\@reddit}{\faReddit\acvHeaderIconSep\@reddit}%
+          \lighthref{https://www.reddit.com/user/\@reddit}{\faReddit\acvHeaderIconSep\@reddit}%
         }%
       \ifthenelse{\isundefined{\@xing}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
+          \lighthref{https://www.xing.com/profile/\@xing}{\faXingSquare\acvHeaderIconSep\@xing}
         }%
       \ifthenelse{\isundefined{\@extrainfo}}%
         {}%
