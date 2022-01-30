@@ -84,7 +84,7 @@
 % Needed to deal a paragraphs
 \RequirePackage{parskip}
 % Needed to deal hyperlink  [ see: https://github.com/mlampros/My.CVitae/issues/1#issuecomment-1024437679 for the 'darklink' and 'lightlink' ]
-\RequirePackage[unicode]{hyperref}
+\RequirePackage[hidelinks,unicode]{hyperref}
 \hypersetup{%
   pdftitle={},
   pdfauthor={},
