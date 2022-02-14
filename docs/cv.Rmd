@@ -73,44 +73,6 @@ software %>%
                           where = glue::glue("{where} ({release})"))
 ```
 
-\bigskip
-\bigskip
-
-
-Publications
-============
-
-```{r google scholar, include=FALSE}
-
-pubs <- scholar::get_publications("JXg3b58AAAAJ") %>% 
-  dplyr::mutate(author = author %>% 
-                  as.character %>% 
-                  stringr::str_trim(),
-                journal = journal %>% 
-                  replace(journal %in% "bioRxiv", "BioRxiv"), 
-                first_author = dplyr::case_when(stringr::str_starts(author, "L Mouselimis") ~ TRUE,
-                                         TRUE ~ FALSE),
-                preprint = dplyr::case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
-                                     TRUE ~ FALSE)) %>% 
-  dplyr::arrange(desc(year))
-
-```
-
-
-```{r}
-
-pubs %>% 
-  dplyr::filter(first_author, !preprint) %>% 
-  vitae::detailed_entries(
-    what = title,
-    when = as.character(year),
-    with = author,
-    where = journal, 
-    .protect = TRUE
-  )
-
-```
-
 
 \bigskip
 \bigskip
@@ -327,6 +289,45 @@ personal_data %>%
   kableExtra::kable_styling(full_width = F, font_size = 9, latex_options = "HOLD_position", fixed_thead = T) %>% 
   kableExtra::column_spec(1, bold = TRUE, color = 'blue') %>%
   kableExtra::column_spec(2, width = "30em")
+
+```
+
+
+\bigskip
+\bigskip
+
+
+Publications
+============
+
+```{r google scholar, include=FALSE}
+
+pubs <- scholar::get_publications("JXg3b58AAAAJ") %>% 
+  dplyr::mutate(author = author %>% 
+                  as.character %>% 
+                  stringr::str_trim(),
+                journal = journal %>% 
+                  replace(journal %in% "bioRxiv", "BioRxiv"), 
+                first_author = dplyr::case_when(stringr::str_starts(author, "L Mouselimis") ~ TRUE,
+                                         TRUE ~ FALSE),
+                preprint = dplyr::case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
+                                     TRUE ~ FALSE)) %>% 
+  dplyr::arrange(desc(year))
+
+```
+
+
+```{r}
+
+pubs %>% 
+  dplyr::filter(first_author, !preprint) %>% 
+  vitae::detailed_entries(
+    what = title,
+    when = as.character(year),
+    with = author,
+    where = journal, 
+    .protect = TRUE
+  )
 
 ```
 
