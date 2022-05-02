@@ -28,9 +28,13 @@ jobs:
           sudo apt-get -y update
           sudo apt-get install -y software-properties-common
           sudo apt-get -y update
-          sudo add-apt-repository -y ppa:texlive-backports/ppa
-          sudo apt-get -y update
-          sudo apt-get install -y texlive-full
+          sudo apt-get install ppa-purge
+          sudo ppa-purge ppa:jonathonf/texlive
+          sudo dpkg --configure -a
+          sudo apt-get -f install
+          sudo apt-get update
+          sudo apt-get dist-upgrade
+          sudo apt-get install texlive-full
      - name: render the curriculum vitae
        run: |
          Rscript -e "print(getwd())"
