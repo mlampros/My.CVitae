@@ -30,7 +30,6 @@ jobs:
           sudo apt-get install -y texlive-latex-recommended
           sudo apt-get install -y texlive-xetex
           tlmgr --version
-          tlmgr init-usertree
           sudo tlmgr update --all
      - name: render the curriculum vitae
        run: |
