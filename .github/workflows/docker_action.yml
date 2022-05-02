@@ -26,7 +26,8 @@ jobs:
      - name: install texlive
        run: |
           sudo apt-get -y update
-          sudo apt-get install xzdec libpoppler-glib-dev texlive texlive-xetex -y
+          sudo apt-get install -y texlive-latex-recommended
+          sudo apt-get install -y texlive-xetex
           tlmgr --version
           tlmgr init-usertree
           sudo tlmgr update --all
