@@ -23,8 +23,8 @@ jobs:
     steps:
      - name: Set up Git repository
        uses: actions/checkout@v2
-     - name: install enumitem
-       run: sudo tlmgr install enumitem
+     - name: install texlive
+       run: sudo apt install texlive-full
      - name: render the curriculum vitae
        run: |
          Rscript -e "print(getwd())"
