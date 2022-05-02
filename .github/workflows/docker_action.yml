@@ -24,7 +24,10 @@ jobs:
      - name: Set up Git repository
        uses: actions/checkout@v2
      - name: install texlive
-       run: sudo apt install texlive
+       run: |
+          sudo add-apt-repository -y ppa:texlive-backports/ppa
+          sudo apt-get -y update
+          sudo apt-get install -y texlive-full
      - name: render the curriculum vitae
        run: |
          Rscript -e "print(getwd())"
