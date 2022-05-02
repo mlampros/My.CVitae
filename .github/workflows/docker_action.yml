@@ -21,7 +21,12 @@ jobs:
     container:
       image: mlampros/mycvitae:rstudiodev
     steps:
-     - uses: actions/checkout@v2
+     - name: Set up Git repository
+       uses: actions/checkout@v2
+     - name: Compile LaTeX document
+       uses: xu-cheng/latex-action@v2
+       with:
+         root_file: main.tex
      - name: render the curriculum vitae
        run: |
          Rscript -e "print(getwd())"
