@@ -17,3 +17,5 @@ RGF,Regularized Greedy Forest,2018-02-13,L Mouselimis,http://mlampros.github.io/
 SuperpixelImageSegmentation,Superpixel Image Segmentation,2018-12-30,L Mouselimis,http://mlampros.github.io/2018/11/09/Image_Segmentation_Superpixels_Clustering/, Author and maintainer, CRAN
 textTinyR,Text Processing for Small or Big Data Files,2017-01-07,L Mouselimis,http://mlampros.github.io/2017/01/05/textTinyR_package/, Author and maintainer, CRAN
 PlanetNICFI,Processing of the 'Planet NICFI' Satellite Imagery,2021-06-10,L Mouselimis,http://mlampros.github.io/2021/06/12/Planet_NICFI_Satellite_Imagery/, Author and maintainer, CRAN
+IceSat2R,ICESat-2 Altimeter Data using R,2022-02-07,L Mouselimis,http://mlampros.github.io/2022/02/12/IceSat2R_Altimetry_data/, Author and maintainer, CRAN
+VMDecomp,Variational Mode Decomposition,2022-06-09,L Mouselimis,http://mlampros.github.io/2022/06/11/variatonal_mode_decomposition/, Author and maintainer, CRAN
