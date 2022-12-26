@@ -2,6 +2,7 @@ package,what,when,with,why,where, release
 ClusterR,"Gaussian Mixture Models, K-Means, Mini-Batch-Kmeans, K-Medoids and Affinity Propagation Clustering",2016-09-06,L Mouselimis,http://mlampros.github.io/2016/09/12/clusterR_package/, Author and maintainer, CRAN
 CopernicusDEM,Copernicus Digital Elevation Models,2021-05-15,L Mouselimis,http://mlampros.github.io/2021/05/21/copernicusDEM_package/, Author and maintainer, CRAN
 elmNNRcpp,The Extreme Learning Machine Algorithm,2018-07-05,L Mouselimis,http://mlampros.github.io/2018/07/05/the_extreme_learning_machine_package/, Author and maintainer, CRAN
+fastGLCM,GLCM Texture Features,2022-08-15,L Mouselimis,http://mlampros.github.io/2022/08/16/gray_level_co_occurrence_matrix/, Author and maintainer, CRAN
 fastText,Efficient Learning of Word Representations and Sentence Classification,2021-05-14,L Mouselimis,http://mlampros.github.io/2021/05/14/fasttext_language_identification/, Author and maintainer, CRAN
 FeatureSelection,"Feature extraction and selection based on 'glmnet', 'xgboost' and 'ranger'",2016-05-18,L Mouselimis,http://mlampros.github.io/2016/02/14/feature-selection/, Author and maintainer,Github
 fitbitViz,'Fitbit' Visualizations,2021-05-18,L Mouselimis,http://mlampros.github.io/2021/05/20/fitbitViz_package/, Author and maintainer, CRAN
