@@ -149,10 +149,7 @@ training %>%
                           why = type_education)
 ```
 
-
 \bigskip
-\bigskip
-
 
 Spoken Languages
 ================
