@@ -157,9 +157,6 @@ training %>%
 Spoken Languages
 ================
 
-\bigskip
-
-
 ```{r spoken languages, include=FALSE}
 
 languages = readr::read_csv(spoken_languages)
