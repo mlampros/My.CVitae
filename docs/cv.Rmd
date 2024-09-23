@@ -313,7 +313,7 @@ pubs <- scholar::get_publications("JXg3b58AAAAJ") %>%
 ```{r}
 
 pubs %>% 
-  dplyr::filter(first_author, !preprint) %>% 
+  # dplyr::filter(first_author, !preprint) %>% 
   vitae::detailed_entries(
     what = title,
     when = as.character(year),
