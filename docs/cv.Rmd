@@ -96,7 +96,6 @@ vitae::detailed_entries(edu,
                         where = loc,
                         with = uni,
                         why = details)
-
 ```
 
 
