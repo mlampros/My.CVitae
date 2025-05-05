@@ -294,17 +294,45 @@ Publications
 
 ```{r google scholar, include=FALSE}
 
-pubs <- scholar::get_publications("JXg3b58AAAAJ") %>% 
-  dplyr::mutate(author = author %>% 
-                  as.character %>% 
-                  stringr::str_trim(),
-                journal = journal %>% 
-                  replace(journal %in% "bioRxiv", "BioRxiv"), 
-                first_author = dplyr::case_when(stringr::str_starts(author, "L Mouselimis") ~ TRUE,
-                                         TRUE ~ FALSE),
-                preprint = dplyr::case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
-                                     TRUE ~ FALSE)) %>% 
-  dplyr::arrange(desc(year))
+# pubs <- scholar::get_publications("JXg3b58AAAAJ") %>% 
+#   dplyr::mutate(author = author %>% 
+#                   as.character %>% 
+#                   stringr::str_trim(),
+#                 journal = journal %>% 
+#                   replace(journal %in% "bioRxiv", "BioRxiv"), 
+#                 first_author = dplyr::case_when(stringr::str_starts(author, "L Mouselimis") ~ TRUE,
+#                                          TRUE ~ FALSE),
+#                 preprint = dplyr::case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
+#                                      TRUE ~ FALSE)) %>% 
+#   dplyr::arrange(desc(year))
+
+# get publications
+pubs <- tryCatch({
+  scholar::get_publications("JXg3b58AAAAJ")
+}, error = function(e) {
+  message("Error fetching publications: ", e$message)
+  return(NULL)
+}, warning = function(w) {
+  message("Warning when fetching publications: ", w$message)
+  return(NULL)
+})
+
+
+if (!is.null(pubs) && nrow(pubs) > 0) {
+  pubs <- pubs %>% 
+    dplyr::mutate(author = author %>% 
+                    as.character %>% 
+                    stringr::str_trim(),
+                  journal = journal %>% 
+                    replace(journal %in% "bioRxiv", "BioRxiv"), 
+                  first_author = dplyr::case_when(stringr::str_starts(author, "L Mouselimis") ~ TRUE,
+                                           TRUE ~ FALSE),
+                  preprint = dplyr::case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
+                                       TRUE ~ FALSE)) %>% 
+    dplyr::arrange(desc(year))
+} else {
+  print(pubs)
+}
 
 ```
 
