@@ -33,7 +33,7 @@ jobs:
      - name: render the curriculum vitae
        run: |
          Rscript -e "print(getwd())"
-         Rscript -e "remotes::install_github('jkeirstead/scholar', dependencies = TRUE, force = TRUE)"
+         Rscript -e "Sys.setenv(GITHUB_PAT = '${{ secrets.GH_TOKEN }}'); remotes::install_github('jkeirstead/scholar', upgrade = 'never', dependencies = FALSE, repos = 'https://cloud.r-project.org/')"
          Rscript -e "rmarkdown::render(input = file.path(getwd(), 'docs', 'cv.Rmd'), params = list(work_dir = getwd()))"
      - name: Commit files
        run: |
