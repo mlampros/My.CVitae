@@ -6,6 +6,10 @@
 
 <br>
 
+**2025-05-05**: Added the Github Token in the [(gh) .yml file](https://github.com/mlampros/My.CVitae/blob/master/.github/workflows/docker_action.yml) file because I had to install the latest version of the [scholar R package]() from Github due to an [error](https://github.com/jkeirstead/scholar/issues/108).
+
+<br>
+
 A workflow to programmatically generate my Curriculum Vitae from [templated .csv files](https://github.com/mlampros/My.CVitae/tree/master/data) in the R language both 
 
 * when I push changes to the repository and 
