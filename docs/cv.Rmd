@@ -205,7 +205,7 @@ plt_lev = ggplot2::ggplot(data = technical_skills, ggplot2::aes(x = skill, y = l
   ggplot2::geom_tile(mapping = ggplot2::aes(fill = level)) + 
   ggplot2::facet_wrap(facets = ~type, scales = 'free') +
   ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE)) +
-  ggplot2::theme(plot.title = ggplot2::element_text(size = "8", hjust = 0.5, face = "bold", colour = "blue"),
+  ggplot2::theme(plot.title = ggplot2::element_text(size = 8, hjust = 0.5, face = "bold", colour = "blue"),
                  axis.title.x = ggplot2::element_text(size = 8, face = "bold", colour = "blue"),
                  axis.title.y = ggplot2::element_text(size = 8, face = "bold", colour = "blue"),
                  axis.text.x = ggplot2::element_text(size = 8, face = "bold", colour = "black", angle = 35, vjust = 1.0, hjust = 1.0),
