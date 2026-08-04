@@ -319,20 +319,66 @@ pubs <- tryCatch({
 
 
 if (!is.null(pubs) && nrow(pubs) > 0) {
-  pubs <- pubs %>% 
-    dplyr::mutate(author = author %>% 
-                    as.character %>% 
+  pubs <- pubs %>%
+    dplyr::mutate(author = author %>%
+                    as.character %>%
                     stringr::str_trim(),
-                  journal = journal %>% 
-                    replace(journal %in% "bioRxiv", "BioRxiv"), 
+                  journal = journal %>%
+                    replace(journal %in% "bioRxiv", "BioRxiv"),
                   first_author = dplyr::case_when(stringr::str_starts(author, "L Mouselimis") ~ TRUE,
                                            TRUE ~ FALSE),
                   preprint = dplyr::case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
-                                       TRUE ~ FALSE)) %>% 
+                                       TRUE ~ FALSE)) %>%
     dplyr::arrange(desc(year))
 } else {
   print(pubs)
 }
+
+# #--------------------------------------------------------------------------------------- In case of error use this locally
+# #
+# # 1. Go to my profile: https://scholar.google.com/citations?user=JXg3b58AAAAJ
+# # 2. Check the box at the top of the publication list to select all
+# # 3. Click "Export" as CSV
+# # 4. Replace 'pth' with the local file path which points to the citations .csv file
+# 
+# library(dplyr)
+# 
+# pth = "citations.csv"
+# 
+# pubs <- data.table::fread(pth, stringsAsFactors = FALSE) %>%
+#   dplyr::rename(
+#     author  = Authors,
+#     title   = Title,
+#     journal = Publication,
+#     number  = Number,
+#     year    = Year
+#   ) %>%
+#   dplyr::mutate(
+#     # CSV export doesn't include per-pub citation counts or Scholar's internal IDs;
+#     # add empty placeholders so the object has the same columns as scholar::get_publications()
+#     cites = NA_integer_,
+#     cid   = NA_character_,
+#     pubid = NA_character_,
+#     # strip the trailing "; " that Scholar's export leaves on the author field
+#     author = author %>% stringr::str_remove(";\\s*$")
+#   )
+# 
+# if (!is.null(pubs) && nrow(pubs) > 0) {
+#   pubs <- pubs %>% 
+#     dplyr::mutate(author = author %>% 
+#                     as.character %>% 
+#                     stringr::str_trim(),
+#                   journal = journal %>% 
+#                     replace(journal %in% "bioRxiv", "BioRxiv"), 
+#                   first_author = dplyr::case_when(stringr::str_starts(author, "L Mouselimis") ~ TRUE,
+#                                                   TRUE ~ FALSE),
+#                   preprint = dplyr::case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
+#                                               TRUE ~ FALSE)) %>% 
+#     dplyr::arrange(desc(year))
+# } else {
+#   print(pubs)
+# }
+# #---------------------------------------------------------------------------------------
 
 ```
 
